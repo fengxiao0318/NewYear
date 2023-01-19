@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>看烟花！</title>
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<meta name="keywords" content="">
+		<meta name="description" content=""> 
+		
+		<style>
+		*{padding: 0;margin: 0;}
+			body{
+			  background-color: #000;
+			}
+			
+			canvas{
+			  display: block;
+			  margin: auto;
+			  -webkit-tap-highlight-color:rgba(0,0,0,0);
+			  -webkit-user-select:none; 
+			}
+/* 			.xinnian{
+				position: fixed;
+				left: 50%;left: 50%;
+				transform: translate(-50%，-50%);
+				font-size: 48px;
+			} */
+		</style>
+		<script src="static/js/createjs-2015.11.26.min.js"></script>
+<!-- 		<script type="text/javascript">
+			document.onreadystatechange = function(){
+				alert(1111);
+			}
+		</script> -->
+	</head>
+	<body>
+		<!-- <div class="xinnian">新年快乐</div> -->
+		<canvas id="canvas"></canvas>
+		<script>
+			(function() {
+			  var Fireworks, GRAVITY, K, SPEED, ToRadian, canvas, context, ctx, fireBoss, repeat, stage;			
+			  canvas = document.getElementById("canvas");			
+			  context = canvas.getContext("2d");			
+			  canvas.width = window.innerWidth;			
+			  canvas.height = window.innerHeight;			
+			  stage = new createjs.Stage(canvas);			
+			  stage.autoClear = false;			
+			  ctx = canvas.getContext("2d");			
+			  ctx.fillStyle = "rgba(0, 0, 0, 0)";			
+			  ctx.fillRect(0, 0, canvas.width, canvas.height);			
+			  createjs.Ticker.setFPS(50);			
+			  createjs.Touch.enable(stage);			
+			  stage.update();
+			
+			  // 重力
+			  GRAVITY = 1;
+			
+			  // 抵抗
+			  K = 0.9;
+			
+			  // 速度
+			  SPEED = 12;
+			
+			  // 从度数转换为弧度
+			  ToRadian = function(degree) {
+			    return degree * Math.PI / 180.0;
+			  };
+			
+			  // 制作烟花的class
+			  Fireworks = class Fireworks {
+			    constructor(sx = 100, sy = 100, particles = 70) {
+			      var circle, i, j, rad, ref, speed;
+			      this.sx = sx;
+			      this.sy = sy;
+			      this.particles = particles;
+			      this.sky = new createjs.Container();
+			      this.r = 0;
+			      this.h = Math.random() * 360 | 0;
+			      this.s = 100;
+			      this.l = 50;
+			      this.size = 3;
+			      for (i = j = 0, ref = this.particles; (0 <= ref ? j < ref : j > ref); i = 0 <= ref ? ++j : --j) {
+			        speed = Math.random() * 12 + 2;
+			        circle = new createjs.Shape();
+			        circle.graphics.f(`hsla(${this.h}, ${this.s}%, ${this.l}%, 1)`).dc(0, 0, this.size);
+			        circle.snapToPixel = true;
+			        circle.compositeOperation = "lighter";
+			        rad = ToRadian(Math.random() * 360 | 0);
+			        circle.set({
+			          x: this.sx,
+			          y: this.sy,
+			          vx: Math.cos(rad) * speed,
+			          vy: Math.sin(rad) * speed,
+			          rad: rad
+			        });
+			        this.sky.addChild(circle);
+			      }
+			      stage.addChild(this.sky);
+			    }
+			
+			    explode() {
+			      var circle, j, p, ref;
+			      if (this.sky) {
+			        ++this.h;
+			        for (p = j = 0, ref = this.sky.getNumChildren(); (0 <= ref ? j < ref : j > ref); p = 0 <= ref ? ++j : --j) {
+			          circle = this.sky.getChildAt(p);
+			          // 加速度
+			          circle.vx = circle.vx * K;
+			          circle.vy = circle.vy * K;
+			          // 位置计算
+			          circle.x += circle.vx;
+			          circle.y += circle.vy + GRAVITY;
+
+			          this.l = Math.random() * 100;
+			          // 粒度
+			          this.size = this.size - 0.001;
+			          if (this.size > 0) {
+			            circle.graphics.c().f(`hsla(${this.h}, 100%, ${this.l}%, 1)`).dc(0, 0, this.size);
+			          }
+			        }
+			        if (this.sky.alpha > 0.1) {
+			          this.sky.alpha -= K / 50;
+			        } else {
+			          stage.removeChild(this.sky);
+			          this.sky = null;
+			        }
+			      } else {		
+			      }
+			    }		
+			  };
+			
+			  fireBoss = [];
+			
+			  setInterval(function() {
+			    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+			    ctx.fillRect(0, 0, canvas.width, canvas.height);
+			  }, 40);
+			
+			  setInterval(function() {
+			    var x, y;
+			    x = Math.random() * canvas.width | 0;
+			    y = Math.random() * canvas.height | 0;
+			    fireBoss.push(new Fireworks(x, y));
+			    return fireBoss.push(new Fireworks(x, y));
+			  }, 800);
+			
+			  repeat = function() {
+			    var fireworks, j, ref;
+			    for (fireworks = j = 0, ref = fireBoss.length; (0 <= ref ? j < ref : j > ref); fireworks = 0 <= ref ? ++j : --j) {
+			      if (fireBoss[fireworks].sky) {
+			        fireBoss[fireworks].explode();
+			      }
+			    }
+			    stage.update();
+			  };
+			
+			  createjs.Ticker.on("tick", repeat);
+			
+			  stage.addEventListener("stagemousedown", function() {
+			    fireBoss.push(new Fireworks(stage.mouseX, stage.mouseY));
+			    return fireBoss.push(new Fireworks(stage.mouseX, stage.mouseY));
+			  });			
+			}).call(this);
+		</script>
+	
+<!-- <div id="popover" style="position: fixed;width: 300px;height: 600px;left: 50%;top: 50%;transform: translate(-50%,-50%);background-color: #FFFFFF;">
+	<div id="popover_text" style="color: #fff; padding: 30px;text-align: left;text-indent: 2em;line-height: 30px;font-size: 1rem;background-color: #393D49;">
+		
+	</div>
+	<div id="close" style="width: 100%;height: 24px;margin: 10px;font-size: 18px;text-align: center;position: absolute;bottom: 0;">关闭</div>
+</div>	
+<script type="text/javascript">
+	let a = "有一种花，名为烟花;有一种笑，名曰：烟花笑，这场烟花，璀璨却只能刹那，燃烧挣扎，散落满城牵挂。逝之已矣，生之当如斯。路过一世喧嚣，赋予流年一眼繁华。一念执著，一念烟火，一念灭，俱往已。烟花如斯，寂寞如斯。烟花笑，笑倾城，美了年华，渡了浮生";
+	let arr = a.split("");
+	let PopText = document.querySelector("#popover_text");
+	let index = 0;
+	function writing(){
+		if(index<arr.length){
+			PopText.innerHTML += a[index];
+			setTimeout(writing.bind(this), 200, ++index);
+		}
+	}
+	writing();
+	console.log(arr);
+</script> -->
+</body>
+</html>
