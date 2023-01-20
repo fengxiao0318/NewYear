@@ -31,11 +31,12 @@
 	position:relative;
 	margin: 0 auto;
 	display: block;
-	width:32px;
-	height:32px;
+	width:45px;
+	height:45px;
 	background: url(../image/play.png) no-repeat;
 	cursor: pointer;
 	opacity: 0.2;
+	background-size: 100% 100%;
 }
 
 body {
