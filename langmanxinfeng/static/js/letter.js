@@ -6,8 +6,8 @@ $("#open").click(function(){
 	if(!aparted)
 	{
 		var typed = new Typed('.letter', {
-			strings: ["^1000Ms&nbsp;&nbsp;mei", 
-				"M^200ei<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初次相识于2023 . 1 . 14，何其幸运，2023年的第一场雪是和你一起度过短暂美好时光！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很高兴能够认识到你这样一位不错的女孩儿！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有缘分，希望能和你有个好的故事篇章<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2023年，新春快乐！祝愿你天天开心、没有烦恼！<br><p style='float:right; display:block; width:80px;'>^1000feng^200xiao</p>"],
+			strings: ["^1000Ms&nbsp;&nbsp;shuang", 
+				"S^200huang<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初次相识于2024 . 1 . 20，何其幸运，2024年冬季，能够遇见你这么可爱又心动的女孩儿！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和你在一块儿的时光很开心！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024 . 2 . 8起，和你开启幸福美满的故事新篇章<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024年，新春快乐！祝愿你天天开心、没有烦恼！<br><p style='float:right; display:block; width:80px;'>^1000feng^200xiao</p>"],
 			typeSpeed: 100,
 			backSpeed: 50
 		});
