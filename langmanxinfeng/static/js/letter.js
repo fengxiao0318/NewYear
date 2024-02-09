@@ -7,7 +7,7 @@ $("#open").click(function(){
 	{
 		var typed = new Typed('.letter', {
 			strings: ["^1000Ms&nbsp;&nbsp;shuang", 
-				"S^200huang<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初次相识于2024 . 1 . 20，何其幸运，2024年冬季，能够遇见你这么可爱又心动的女孩儿！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和你在一块儿的时光很开心！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024 . 2 . 8起，和你开启幸福美满的故事新篇章<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024年，新春快乐！祝愿你天天开心、没有烦恼！<br><p style='float:right; display:block; width:80px;'>^1000feng^200xiao</p>"],
+				"S^200huang<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初次相识于2024 . 1 . 20，何其幸运，2024年冬季，能够遇见你这么可爱又心动的女孩儿！和你在一块儿的时光真的超开心！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今后的路，我想有你陪着我一起慢慢走过，看遍山河辽阔，尝尽人间烟火！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024 . 2 . 8，正式和你书写幸福美满的故事新篇章<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024年，新春快乐！天天开心、没有烦恼！<br><p style='float:right; display:block; width:80px;'>^1000feng^200xiao</p>"],
 			typeSpeed: 100,
 			backSpeed: 50
 		});
